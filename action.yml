@@ -1,0 +1,60 @@
+name: "DemoReady: record a PR demo"
+description: "Record a polished demo video of a pull request's preview deployment and post it as a PR comment."
+author: "Sundrylab"
+branding:
+  icon: "video"
+  color: "purple"
+inputs:
+  api-key:
+    description: "DemoReady API key (Settings → API & MCP). Store it as a secret."
+    required: true
+  url:
+    description: "The preview deployment to record, e.g. https://my-app-git-feature.vercel.app"
+    required: true
+  from-demo:
+    description: "Replay an existing demo (its ID from the demo's URL) on the preview. Use this or story."
+    required: false
+  story:
+    description: "Or: what DemoReady's AI should show, e.g. 'Sign up and create a first project'. Needs Pro, Studio or a demo credit."
+    required: false
+  style:
+    description: "Overlay style: studio, clean, bold, aurora, terminal, editorial, neon, brutalist, playful, cinema or slate."
+    required: false
+  voice:
+    description: "Narration voice, e.g. af_heart, bm_george."
+    required: false
+  music:
+    description: "Background music: calm, upbeat, tech, warm, lofi, corporate, cinematic, house, playful, ambient, synthwave or jazz."
+    required: false
+  comment:
+    description: "Post (and update) a comment on the pull request with the video."
+    required: false
+    default: "true"
+  fail-on-error:
+    description: "Fail the workflow step if the demo can't be recorded."
+    required: false
+    default: "false"
+  timeout-minutes:
+    description: "How long to wait for the recording."
+    required: false
+    default: "20"
+  server:
+    description: "DemoReady address."
+    required: false
+    default: "https://demoready.ai"
+  github-token:
+    description: "Token for commenting on the pull request."
+    required: false
+    default: ${{ github.token }}
+outputs:
+  demo-id:
+    description: "The new demo's ID"
+  share-url:
+    description: "Public link to watch the demo"
+  video-url:
+    description: "Direct link to the MP4"
+  status:
+    description: "done or failed"
+runs:
+  using: "node20"
+  main: "index.mjs"
