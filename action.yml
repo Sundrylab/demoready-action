@@ -1,6 +1,6 @@
 name: "DemoReady: record a PR demo"
 description: "Record a polished demo video of a pull request's preview deployment and post it as a PR comment."
-author: "Sundrylab"
+author: "Sundrylab.ai LLC"
 branding:
   icon: "video"
   color: "purple"
